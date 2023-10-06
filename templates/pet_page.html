@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Adopt a Pet {% endblock %}
+
+{% block header%} {{pet.name}} {% endblock %}
+
+
+{% block content %}
+        
+
+
+    <blockquote>
+        {% if pet.photo_url %}
+        <img src="{{pet.photo_url}}" alt="">
+        {% endif %}
+
+        <blockquote>
+            <p>Species: {{pet.species}}</p>
+            <p>Age: {{pet.age}}</p>
+            <p>Notes: {{pet.notes}}</p>
+        </blockquote>
+        <a href="/{{pet.id}}/edit">Edit</a>
+    </blockquote>
+        
+
+
+
+
+{% endblock %}

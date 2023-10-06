@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Adopt a Pet {% endblock %}
+
+{% block header%} Adopt a Pet {% endblock %}
+
+
+{% block content %}
+    
+        <h2>Available for Adoption</h2>        
+            <main>
+                {% for pet in pets %}
+
+                    {% if pet.available %}
+                        <div>
+                            {% if pet.photo_url %}
+                            <img src="{{pet.photo_url}}" alt="">
+                            {% endif %}
+                            <p> <a href="/{{pet.id}}">{{pet.name}}</a> {% if pet.available%}<b>is available</b> {% endif %}  </p>
+                            <!-- <a href="/{{pet.id}}/edit">Edit</a> -->
+                        </div>
+                    {% endif %}
+                {% endfor %}    
+            </main>
+    
+
+      
+        <h2>Happily Adopted</h2>
+            <main>
+                {% for pet in pets %} 
+                    {% if not pet.available %}
+                        <div>
+                            {% if pet.photo_url %}
+                            <img src="{{pet.photo_url}}" alt="">
+                            {% endif %}
+                            <p> <a href="/{{pet.id}}">{{pet.name}}</a> {% if pet.available%}<b>is available</b> {% endif %}  </p>
+                            <!-- <a href="/{{pet.id}}/edit">Edit</a> -->
+                        </div>
+                    {% endif %}   
+                {% endfor %}         
+            </main>
+    
+    
+
+
+{% endblock %}
